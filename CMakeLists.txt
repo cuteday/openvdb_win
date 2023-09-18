@@ -13,6 +13,8 @@ target_include_directories(openvdb INTERFACE ${OPENVDB_INCLUDE_DIRS})
 
 # target_compile_definitions(openvdb INTERFACE NOMINMAX)
 set(OPENEXR_BUILD_SHARED ON)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/ilmbase)
+
 target_link_directories(openvdb INTERFACE 
 ${CMAKE_CURRENT_SOURCE_DIR}/openvdb/lib
 ${CMAKE_CURRENT_SOURCE_DIR}/boost/lib
@@ -24,4 +26,5 @@ target_link_libraries(openvdb INTERFACE
 	"$<IF:$<CONFIG:Debug>,tbb_debug,tbb>"
 	libboost_system-vc141-mt-x64-1_70
 	libboost_iostreams-vc141-mt-x64-1_70
+	IlmBase::Half
 )
